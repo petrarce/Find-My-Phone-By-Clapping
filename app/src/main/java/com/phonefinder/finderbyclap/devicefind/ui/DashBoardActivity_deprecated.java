@@ -35,7 +35,7 @@ import com.phonefinder.finderbyclap.devicefind.databinding.ExitLayoutBinding;
 import com.phonefinder.finderbyclap.devicefind.fragment.FindFragment;
 import com.phonefinder.finderbyclap.devicefind.fragment.SettingFragment;
 
-public class DashBoardActivity extends AppCompatActivity {
+public class DashBoardActivity_deprecated extends AppCompatActivity {
     ActivityDashBoardBinding binding;
     int PERMISSIONGET = 1;
     String[] GETPERMISSIONS = {
@@ -61,7 +61,7 @@ public class DashBoardActivity extends AppCompatActivity {
         }
 
         if (!checkPermissions(getApplicationContext(), GETPERMISSIONS)) {
-            ActivityCompat.requestPermissions(DashBoardActivity.this, GETPERMISSIONS, PERMISSIONGET);
+            ActivityCompat.requestPermissions(DashBoardActivity_deprecated.this, GETPERMISSIONS, PERMISSIONGET);
         }
         binding.navigationView.setItemIconTintList(ColorStateList.valueOf(Color.BLACK));
         binding.phoneFinderll.setBackground(defaultBackground);
@@ -96,7 +96,7 @@ public class DashBoardActivity extends AppCompatActivity {
                     binding.privacyLl.setBackground(defaultBackground);
                     binding.privacyPolicyLl.setBackground(defaultBackground);
                     binding.drawer.closeDrawer(Gravity.LEFT);
-                    startActivity(new Intent(DashBoardActivity.this,SettingActivity.class));
+                    startActivity(new Intent(DashBoardActivity_deprecated.this,SettingActivity.class));
 //                });
             }
         });
@@ -191,23 +191,23 @@ public class DashBoardActivity extends AppCompatActivity {
     public void startCLick(View view) {
 
 
-        if (ContextCompat.checkSelfPermission(DashBoardActivity.this, Manifest.permission.RECORD_AUDIO)
+        if (ContextCompat.checkSelfPermission(DashBoardActivity_deprecated.this, Manifest.permission.RECORD_AUDIO)
                 == PackageManager.PERMISSION_GRANTED
                 &&
-                ContextCompat.checkSelfPermission(DashBoardActivity.this, Manifest.permission.CAMERA)
+                ContextCompat.checkSelfPermission(DashBoardActivity_deprecated.this, Manifest.permission.CAMERA)
                         == PackageManager.PERMISSION_GRANTED
         ) {
 
-            startActivity(new Intent(DashBoardActivity.this, MainActivity.class));
+            startActivity(new Intent(DashBoardActivity_deprecated.this, MainActivity.class));
             finish();
 
-        } else if (ContextCompat.checkSelfPermission(DashBoardActivity.this, Manifest.permission.RECORD_AUDIO)
+        } else if (ContextCompat.checkSelfPermission(DashBoardActivity_deprecated.this, Manifest.permission.RECORD_AUDIO)
                 == PackageManager.PERMISSION_DENIED
                 ||
-                ContextCompat.checkSelfPermission(DashBoardActivity.this, Manifest.permission.CAMERA)
+                ContextCompat.checkSelfPermission(DashBoardActivity_deprecated.this, Manifest.permission.CAMERA)
                         == PackageManager.PERMISSION_DENIED
         ) {
-            new AlertDialog.Builder(DashBoardActivity.this).setMessage(R.string.permissionenabled).setPositiveButton(R.string.go_to_setting, (dialog, which) -> {
+            new AlertDialog.Builder(DashBoardActivity_deprecated.this).setMessage(R.string.permissionenabled).setPositiveButton(R.string.go_to_setting, (dialog, which) -> {
                 // navigate to settings
                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                         Uri.parse("package:" + getPackageName()));
@@ -219,7 +219,7 @@ public class DashBoardActivity extends AppCompatActivity {
             }).show();
         } else {
             if (!checkPermissions(getApplicationContext(), GETPERMISSIONS)) {
-                ActivityCompat.requestPermissions(DashBoardActivity.this, GETPERMISSIONS, PERMISSIONGET);
+                ActivityCompat.requestPermissions(DashBoardActivity_deprecated.this, GETPERMISSIONS, PERMISSIONGET);
 
             }
         }
@@ -247,7 +247,7 @@ public class DashBoardActivity extends AppCompatActivity {
     }
 
     private void navigateToMainActivityWithFragment(Class<? extends Fragment> fragmentClass, int iconResourceId) {
-        Intent intent = new Intent(DashBoardActivity.this, MainActivity.class);
+        Intent intent = new Intent(DashBoardActivity_deprecated.this, MainActivity.class);
         intent.putExtra("fragmentClass", fragmentClass.getName());
         intent.putExtra("iconResourceId", iconResourceId);
         startActivity(intent);
@@ -263,8 +263,8 @@ public class DashBoardActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(shareIntent, "Choose one"));
     }
     private void openCloseDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(DashBoardActivity.this);
-        ExitLayoutBinding bind = ExitLayoutBinding.inflate(LayoutInflater.from(DashBoardActivity.this));
+        AlertDialog.Builder builder = new AlertDialog.Builder(DashBoardActivity_deprecated.this);
+        ExitLayoutBinding bind = ExitLayoutBinding.inflate(LayoutInflater.from(DashBoardActivity_deprecated.this));
         builder.setView(bind.getRoot());
         AlertDialog dialog = builder.create();
         dialog.setCanceledOnTouchOutside(false);
